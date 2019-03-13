@@ -1,0 +1,37 @@
+@startuml
+
+actor customer
+customer->cart:<<create>>
+activate customer
+activate cart
+
+cart->order:get Total
+
+activate order
+
+order->item:get Price
+
+activate item
+
+deactivate item
+
+item->order: Price
+
+order -> order
+activate order #DarkSalmon
+order -> order : calculate total
+
+deactivate order
+order->cart:Total price
+
+deactivate order
+
+cart->customer:completed
+
+deactivate cart
+deactivate customer
+
+
+
+
+@enduml

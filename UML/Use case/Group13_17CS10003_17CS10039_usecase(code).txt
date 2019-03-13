@@ -1,0 +1,47 @@
+@startuml
+
+left to right direction
+:Customer: as cust
+:Restaurant Manager: as rm
+:Administror: as admin
+:Delivery Boy: as db
+skinparam packageStyle rectangle
+rectangle checkout {
+    (delete food item \n from cart) as deletef
+    (add food item to \n cart) as addf
+    (Sign-in/Sign-up) as Sin
+    (Search Restaurant) as sera
+    (obtain help) as oh
+    (Feedback/Rating) as fera
+    (Check out) as co
+    (display restaurant \n page) as dispr
+    (Process Order) as po
+    (add new food \n to menu) as addfr
+    (remove food item \n from menu) as remfr
+    (change price) as chngp
+    (Change status of \n food item) as chngs
+    (Modify Restaurant) as modr
+    (approve restaurants) as appr
+    (Resolve complaints) as reco
+    (get orders) as getord
+    (update order \n status) as updstat
+    cust--addf
+    cust--deletef
+    cust--Sin
+    cust--sera
+    cust--co
+    cust--oh
+    cust--fera
+    cust--dispr
+    dispr----rm
+    po--rm
+    addfr--rm
+    remfr--rm
+    chngp--rm
+    chngs--rm
+    modr--admin
+    appr--admin
+    reco--admin
+    db -- getord
+    db -- updstat
+}

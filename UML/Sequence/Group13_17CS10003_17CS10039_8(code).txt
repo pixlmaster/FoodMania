@@ -1,0 +1,28 @@
+@startuml
+
+actor rmanager
+activate menu
+activate rmanager
+
+rmanager->menu: add food item
+
+menu->item:get Price
+
+activate item
+
+item->menu: Price
+
+menu->item:get Description
+
+item->menu:description
+
+menu->rmanager: completed
+
+deactivate menu
+
+deactivate rmanager
+
+deactivate item
+
+
+@enduml

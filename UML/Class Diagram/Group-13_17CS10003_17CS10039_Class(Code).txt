@@ -1,0 +1,66 @@
+@startuml
+
+title Food-Mania
+
+
+class Customer {
+  +Customer_ID: Integer
+  +type : String
+  *void Search_Restaurant()
+  *void Get_Help()
+  *void Give_Feedback()
+  *void Display_page(Restaurant_ID)
+  *void add_to_cart(Food_ID)
+  *void Delete_from_cart(Food_ID)
+  *void Check-out()
+  
+}
+
+class Restaurant {
+    +Restaurant_ID : Integer
+    *void Display_page(Restaurant_ID)
+    *void add_new_item(Food_ID)
+    *void Remove_item(Food ID)
+    *void Change_status(Food_ID)
+    *void Change_Price(Food_ID)
+    *list ProcessOrder()
+}
+
+
+class Administrator {
+    +Admin_ID :Int
+    *bool Approve_Restaurant(Restaurant_ID)
+    *bool Modify_Restaurant(Restaurant_ID)
+    *void Resolve_complaint(Complaint_ID)
+    
+}
+
+class Delivery_boy {
+    +D_ID=Integer
+    *list Get_Order(D_ID)
+    *bool Update_status(Order_ID)
+
+}
+
+class Order {
+    +Order_ID = Integer
+    *void update_status()
+
+}
+
+
+class Payment {
+    +Amount : Int
+    +Payment Option: int
+    *bool Process_Payment(Payment_Option, Order_ID)
+}
+
+
+Restaurant "1" --> "1..*" Customer : Gets Order
+Customer "1..*" --> "0..*" Order : creates
+Delivery_boy "1..*" --> "1..*" Order : delivers
+Order "1" --> "1" Payment : Payment of Order
+Administrator "1..*" --> "1..*" Restaurant : Manages List Of
+Customer "1..*" --> "1..*" Administrator : Complaints/Feedbacks
+
+@enduml
