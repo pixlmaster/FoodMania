@@ -1,5 +1,6 @@
-<html>
-
+{% extends "main/header.html" %}
+{% block content %}	
+{% load staticfiles %}
 <style>
 #logo {
   display: block;
@@ -18,18 +19,18 @@
 </style>
 
 <body style="background-color:Blue ;">
-	<a href="home.html">
-		<img title="Food-Mania" src="images/logo.png" alt="Food-Mania" style="widht:400px;height:100px; align-self: "middle" id="logo">
+	<a href="">
+		<img title="Food-Mania" src="{% static 'main/images/logo.png' %}" alt="Food-Mania" style="widht:400px;height:100px; align-self: "middle" id="logo">
 	</a>
 	<br><br>
 	<div id="login-Buttons" align="middle">
-		<a href=log-in.html title="click here to log-in">
+		<a href=login title="click here to log-in">
 			<button>Log-in</button>
 		</a>
-		<a href=sign-up.html title="click here if you're new">
+		<a href=signup title="click here if you're new">
 			<button>Sign-up</button>
 		</a>
 	</div>
 </body>
 
-</html>
+{% endblock %}
