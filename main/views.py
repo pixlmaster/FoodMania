@@ -38,3 +38,8 @@ def sign_up(request):
 		template_name='main/sign-up.html',
 		context={"form": form}
 		)
+
+def logout_request(request):
+	logout(request)
+	messages.info(request, "Logged out successfully!")
+	return redirect("main:homepage") 
