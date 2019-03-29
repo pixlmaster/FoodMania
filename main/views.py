@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import foodmania
+from .models import Restaurant
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 
 def homepage(request):
 	return render(request=request,
-				  template_name="main/home.html"
+				  template_name="main/home.html",
+				  context={"restaurants":Restaurant.objects.all}
 		)
 
 def sign_up(request):
