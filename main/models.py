@@ -5,9 +5,9 @@ class Restaurant(models.Model):
     Restaurant_Name = models.CharField(max_length=200, default="Restaurant")
     Restaurant_email = models.CharField(max_length=200, default="null"	)
     Restaurant_Description = models.CharField(max_length=200, default="none")
-    Restaurant_image = models.ImageField(upload_to="static/main/images/", default="no image")
+    Restaurant_image = models.ImageField(upload_to="images/", default="no image")
 
     def __str__(self):
-        return self.user_Name
+        return self.Restaurant_Name
 
     

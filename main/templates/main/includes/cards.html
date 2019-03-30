@@ -1,18 +1,20 @@
  {% load staticfiles %} 
  <br><br>
   <div class="row">
+    {% for rest in restaurants %}
     <div class="col s8 m5">
       <div class="card">
         <div class="card-image">
           <img src="{% static 'main/images/subway.jpg' %}">
-          <span class="card-title">Restaurant-1</span>
+          <span class="card-title">{{rest.Restaurant_name}}</span>
         </div>
         <div class="card-content">
-          <p>Best subs in town.</p>
+          <p>{{rest.Restaurant_Description}}</p>
         </div>
         <div class="card-action">
           <a href="/">Visit</a>
         </div>
       </div>
     </div>
+    {% endfor %}
   </div>
