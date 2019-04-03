@@ -1,0 +1,35 @@
+@startuml
+
+actor customer
+actor restaurant_manager
+activate customer
+activate restaurant_manager
+
+
+customer->restaurant_page : request
+restaurant_manager -> restaurant_page : request
+
+activate restaurant_page
+
+restaurant_page -> database : get data
+
+activate database
+
+database->restaurant_page : data
+
+deactivate database
+
+restaurant_page->customer : display
+restaurant_page->restaurant_manager:display
+
+deactivate restaurant_page
+
+deactivate customer
+deactivate restaurant_manager
+
+
+
+
+
+
+@enduml

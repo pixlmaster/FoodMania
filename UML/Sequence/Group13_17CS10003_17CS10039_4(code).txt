@@ -1,0 +1,28 @@
+@startuml
+
+actor customer
+activate customer
+
+customer->search : execute
+activate search
+search->search_engine : search
+
+activate search_engine
+
+search_engine->search : prepare list
+
+deactivate search_engine
+
+search->customer:show list
+
+deactivate search
+
+deactivate customer
+
+
+
+
+
+
+
+@enduml

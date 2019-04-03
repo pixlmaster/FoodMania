@@ -1,0 +1,37 @@
+{% extends "main/header.html" %}
+{% block content %}	
+{% load staticfiles %}
+<style>
+#logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#login-buttons button {
+  background-color: #4CAF50;
+  border: 1px solid green;
+  color: white;
+  padding: 20px 48px;
+  cursor: pointer;
+}
+#login-buttons button:hover {background-color: #3e8e41}
+</style>
+
+<body style="background-color:Blue ;">
+	<a href="/">
+		<img title="Food-Mania" src="{% static 'main/images/logo.png' %}" alt="Food-Mania" style="widht:400px;height:100px; align-self: "middle" id="logo">
+	</a>
+	<br><br>
+	<div id="login-Buttons" align="middle">
+		<a href=login title="click here to log-in">
+			<button>Log-in</button>
+		</a>
+		<a href=signup title="click here if you're new">
+			<button>Sign-up</button>
+		</a>
+	</div>
+	{% include "main/includes/cards.html" %}
+</body>
+
+{% endblock %}

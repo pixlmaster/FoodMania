@@ -1,0 +1,28 @@
+@startuml
+
+actor customer
+customer->server:enter log-in details
+activate customer
+activate server
+
+deactivate server
+
+customer->server:log-in
+activate server
+
+server->database:authenticate credentials
+activate database
+deactivate database
+
+alt successful
+
+    server-->customer: authentication accespted
+else failiure
+    server-->customer: authentication failiure
+    end
+    
+deactivate customer
+deactivate server
+
+
+@enduml

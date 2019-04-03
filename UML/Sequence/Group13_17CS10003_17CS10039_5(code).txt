@@ -1,0 +1,25 @@
+@startuml
+
+actor customer
+activate customer
+
+customer->feedback: select
+
+activate feedback
+
+feedback->customer  : provide form
+
+customer -> feedback : submit form
+
+feedback->customer : completed
+
+deactivate feedback
+
+deactivate customer
+
+
+
+
+
+
+@enduml
