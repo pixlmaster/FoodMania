@@ -9,5 +9,8 @@ urlpatterns = [
     path('signup/' ,views.sign_up, name= 'signup'),
     path('logout/', views.logout_request, name='logout'),
     path('login/', views.login_request, name='login'),
-    re_path('profile/(?P<username>[a-zA-Z0-9]+)$', views.get_user_profile, name = 'profile'),
+    path('profile/', views.get_user_profile, name = 'profile'),
+    path('profile/logout', views.logout_request, name = 'prof-logout'),
+    re_path('profile/profile', views.get_user_profile, name = 'prof-prof'),
+    re_path('profile/signup', views.sign_up, name = 'prof-signup')
 ]

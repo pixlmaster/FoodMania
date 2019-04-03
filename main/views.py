@@ -64,11 +64,11 @@ def login_request(request):
 
 #display User Profile
 
-def get_user_profile(request, username) : 
-	user = User.objects.get(username = username)
+def get_user_profile(request) : 
 	return render(request, 
-					template_name = 'main/user_profile.html',
-					context = {'user' : user} )
+					template_name = 'main/user_profile.html'
+					)
+
 
 #end 
 
