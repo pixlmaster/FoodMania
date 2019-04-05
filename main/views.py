@@ -78,6 +78,8 @@ def get_user_profile(request) :
 					template_name = 'main/user_profile.html'
 					)
 
-
+def about(request):
+	return render(request,
+					template_name='main/about.html')
 #end 
 
