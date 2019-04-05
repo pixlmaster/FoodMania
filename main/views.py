@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Restaurant
+from .models import Restaurant, Food
 from .forms import SignUpForm
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
@@ -10,11 +10,20 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 
+
+def single_slug(request, single_slug):
+    Restaurants = [r.Restaurant_slug for r in Restaurant.objects.all()]
+
+    matching_Food = Food.objects.filter(Restaurant_items__Restaurant_slug=single_slug)
+    return render(request=request,
+                 template_name='main/Restaurant.html',
+                 context={"matching_Food": matching_Food})
+
 def homepage(request):
 	return render(request=request,
 				  template_name="main/home.html",
 				  context={"restaurants":Restaurant.objects.all}
-		)
+			)
 
 def sign_up(request):
 	if request.method == "POST":

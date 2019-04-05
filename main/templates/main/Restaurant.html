@@ -1,0 +1,23 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+
+    <div class="row">
+      <table>
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for food in matching_Food %}
+          <tr>
+            <td>{{food.Food_name}}</td>
+            <td>{{food.Food_price}}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+{% endblock %}

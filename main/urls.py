@@ -12,5 +12,6 @@ urlpatterns = [
     path('profile/', views.get_user_profile, name = 'profile'),
     path('profile/logout', views.logout_request, name = 'prof-logout'),
     re_path('profile/profile', views.get_user_profile, name = 'prof-prof'),
-    re_path('profile/signup', views.sign_up, name = 'prof-signup')
+    re_path('profile/signup', views.sign_up, name = 'prof-signup'),
+    path("<single_slug>", views.single_slug, name="single_slug"),
 ]
