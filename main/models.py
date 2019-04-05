@@ -24,9 +24,18 @@ class Food(models.Model):
 	def __str__(self):
 		return self.Food_name
 
+
 class complaint(models.Model):
     Username= models.CharField(max_length=200, default="none")
     Message = models.CharField(max_length=200, default="none")
 
+
     def __str__(self):
         return self.Username
+
+
+def create(name, message):
+    comp=complaint()
+    comp.Username=name
+    comp.Message=message
+    return comp    

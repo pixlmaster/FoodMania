@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Restaurant, Food, complaint
+from .models import Restaurant, Food, complaint, create
 from .forms import SignUpForm
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
@@ -102,11 +102,11 @@ def about(request):
 					
 #end 
 
-def complaint(request):
+def complain(request):
 	if request.method == 'POST':
-		name= request.POST.get('username')
+		name= str(request.POST.get('username'))
 		usermessage= request.POST.get('Message')
-		#c=complaint(Username=name,Message=usermessage)
-		#c.save()
+		c=create(name,usermessage)
+		c.save()
 		messages.info(request, f"Your complaint/query was submitted")
 		return redirect("/about")
