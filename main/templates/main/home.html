@@ -31,6 +31,11 @@
 			<button>Sign-up</button>
 		</a>
 	</div>
+	<br> <br> 
+	<form name = "search-form" class = "search-form" method = "POST" action = "/search" > 
+		{% csrf_token %}
+		<input type = "text" name = "search" placeholder = "Search Restaurant"> 
+	</form> 
 	{% include "main/includes/cards.html" %}
 </body>
 

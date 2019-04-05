@@ -1,0 +1,36 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+ {% load staticfiles %} 
+
+<style> 
+	.card{
+		max-height : 30%;
+		max-width : 30%;
+		float : left;
+		margin-left : 5%;
+	}
+</style> 
+{% if restaurants %}
+	{% for rest in restaurants %}
+		<div class="col s8 m5">
+		  <div class="card">
+		    <div class="card-image">
+		      <img src="{{ rest.Restaurant_image.url }}" height="auto" width="auto">
+		      <span class="card-title">{{rest.Restaurant_name}}</span>
+		    </div>
+		    <div class="card-content">
+		      <p>{{rest.Restaurant_Description}}</p>
+		    </div>
+		    <div class="card-action">
+		      <a href="{{ rest.Restaurant_slug }}">Visit</a>
+		    </div>
+		  </div>
+		</div>
+	{% endfor %}
+	
+{% else %}
+	<p> Nothing found </p> 
+{% endif %}
+
+{% endblock %}
