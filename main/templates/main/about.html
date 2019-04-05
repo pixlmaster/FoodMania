@@ -53,7 +53,7 @@ h1, h2, h3, h4, h5, h6 {
     <p>We understand your needs and we will cater the food to satisfy the biggest criteria of them all, both look and taste. Do not hesitate to contact us.</p>
     <p class="w3-text-blue-grey w3-large"><b>IIT Kharagpur,West Bengal, 721302 ,India</b></p>
     <p>You can also contact us by phone 9933420006 or email Foodmania@Foodmania.com, or you can send us a message here:</p>
-    <form action="/complaint" target="_blank" method="post">
+    <form action="/complaint" target="_self" method="post">
       {% csrf_token %}
       <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="username"></p>
       <p><input class="w3-input w3-padding-16" type="datetime-local" placeholder="Date and time" required name="date" value="2017-11-16T20:00"></p>

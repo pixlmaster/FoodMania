@@ -27,7 +27,7 @@ class Food(models.Model):
 
 class complaint(models.Model):
     Username= models.CharField(max_length=200, default="none")
-    Message = models.CharField(max_length=200, default="none")
+    Message = models.TextField(max_length=200, default="none")
 
 
     def __str__(self):
