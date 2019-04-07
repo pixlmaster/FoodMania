@@ -110,3 +110,6 @@ def complain(request):
 		c.save()
 		messages.info(request, f"Your complaint/query was submitted")
 		return redirect("/about")
+
+def checkout(request):
+	return HttpResponse("welcome to your checkout");

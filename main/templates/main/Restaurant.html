@@ -2,22 +2,71 @@
 
 {% block content %}
 
+<style >
+
+  #check button {
+  background-color: #4CAF50;
+  border: 1px solid green;
+  color: white;
+  padding: 20px 48px;
+  cursor: pointer;
+}
+#check button:hover {background-color: #3e8e41}
+</style>
+
     <div class="row">
       <table>
+    <!-- Form for displaying menu and checkout  --> 
+    <form name = "myform" action = "/checkout" target = "_self" method = "POST" > 
+    	{% csrf_token %}
+      <table id = "myTable" >
         <thead>
           <tr>
               <th>Name</th>
-              <th>Price</th>
+              <th></th>
+              <th>price</th>
+              <th></th>
+              <th>Quantity</th>
           </tr>
-        </thead>
-        <tbody>
         {% for food in matching_Food %}
           <tr>
             <td>{{food.Food_name}}</td>
+            <td> <input type = "hidden" name = "food_name[]" value = {{food.Food_name}}> </td> 
+
             <td>{{food.Food_price}}</td>
+            <td> <input type = "hidden" name = "foodprice" value = {{food.Food_price}} >  </td> 
+
+            <td> <input type = "text" name = "quantity" placeholder = "quantity" oninput="calculateTotal()"> </td> 
           </tr>
         {% endfor %}
+        <tr>
+          <td>Total Amount</td>
+         <td> <input type="text" name="total" id="total" disabled="disabled"> </td>
+        </tr>
         </tbody>
       </table>
+
+  <div id="check" >
+    <a href=checkout title="checkout">
+      <button>Checkout</button>
+    </a>
+  </div>  
+     </form> 
     </div>
-{% endblock %}
+
+<script type="text/javascript">
+  function calculateTotal() {
+    var quant = document.getElementsByName('quantity');
+    var prices = document.getElementsByName('foodprice');
+    var tot=0;
+    for(var i=0;i<quant.length;i++){
+        if(parseInt(quant[i].value))
+            tot += parseInt(quant[i].value)*parseInt(prices[i].value);
+    }
+    document.getElementById('total').value = tot;
+  }
+</script>
+
+{% endblock %} 
+
+
