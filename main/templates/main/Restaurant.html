@@ -15,10 +15,12 @@
 </style>
 
     <div class="row">
+        <h4>{{ rest_name }}</h4>
       <table>
     <!-- Form for displaying menu and checkout  --> 
-    <form name = "myform" action = "/checkout" target = "_self" method = "POST" > 
+    <form name = "myform" action = "/cart" target = "_self" method = "POST" > 
     	{% csrf_token %}
+      <input type = "hidden" name = "Rest_name" value = {{rest_name}}>
       <table id = "myTable" >
         <thead>
           <tr>
@@ -31,7 +33,7 @@
         {% for food in matching_Food %}
           <tr>
             <td>{{food.Food_name}}</td>
-            <td> <input type = "hidden" name = "food_name[]" value = {{food.Food_name}}> </td> 
+            <td> <input type = "hidden" name = "food_name" value = {{food.Food_name}}> </td> 
 
             <td>{{food.Food_price}}</td>
             <td> <input type = "hidden" name = "foodprice" value = {{food.Food_price}} >  </td> 
@@ -47,8 +49,8 @@
       </table>
 
   <div id="check" >
-    <a href=checkout title="checkout">
-      <button>Checkout</button>
+    <a href=cart title="cart">
+      <button>Cart</button>
     </a>
   </div>  
      </form> 

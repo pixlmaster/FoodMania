@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Restaurant, Food, complaint, create
 from .forms import SignUpForm
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -13,16 +13,17 @@ from django.contrib.auth.models import User
 
 def single_slug(request, single_slug):
     Restaurants = [r.Restaurant_slug for r in Restaurant.objects.all()]
+    Restaurant_name=single_slug
 
     matching_Food = Food.objects.filter(Restaurant_items__Restaurant_slug=single_slug)
     return render(request=request,
                  template_name='main/Restaurant.html',
-                 context={"matching_Food": matching_Food})
+                 context={"matching_Food": matching_Food, "rest_name":Restaurant_name})
 
 def homepage(request):
 	return render(request=request,
 				  template_name="main/home.html",
-				  context={"restaurants":Restaurant.objects.all}
+				  context={"restaurants":Restaurant.objects.all }
 			)
 
 def sign_up(request):
@@ -46,10 +47,14 @@ def sign_up(request):
 		template_name='main/sign-up.html',
 		context={"form": form}
 		)
+		
+		
 def logout_request(request):
 	logout(request)
 	messages.info(request, "Logged out successfully!")
 	return redirect("main:homepage") 
+	
+	
 def login_request(request):
     if request.method == 'POST':
         form = AuthenticationForm(request=request, data=request.POST)
@@ -111,5 +116,29 @@ def complain(request):
 		messages.info(request, f"Your complaint/query was submitted")
 		return redirect("/about")
 
+#checkout 
+def cart(request):
+	if request.method == 'POST' : 
+		messages.info(request, f"Opened Cart")
+		name = request.POST.getlist('food_name') 
+		price = request.POST.getlist('foodprice') 
+		quantity = request.POST.getlist('quantity') 
+		Rest_name=request.POST.get('Rest_name')
+		
+		data = []
+		total = 0
+		for i in range(len(name))  :
+			if quantity[i] is not '' : 
+				data.append({'name' : name[i], 'price' : int(price[i]), 'quantity' : int(quantity[i]) } )
+				total = total + int(price[i]) * int(quantity[i])
+				
+		#if not data : 
+		#	messages.info(request, f"Atleast one food item should have positive quantity")
+		#	return HttpResponseRedirect("")
+		
+		context = {'data' : data, 'total' : total, 'rest_name':Rest_name}
+		return render(request, "main/cart.html" ,
+			context )
+
 def checkout(request):
-	return HttpResponse("welcome to your checkout");
+	return HttpResponse('Checked Out')
