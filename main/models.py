@@ -39,3 +39,31 @@ def create(name, message):
     comp.Username=name
     comp.Message=message
     return comp    
+
+class Order(models.Model):
+    Orders_id = models.CharField(max_length=200, default="0")
+    Orders_total = models.IntegerField() 
+    class Meta:
+        verbose_name_plural = "Orders"   
+
+    def __str__(self):
+        return self.Orders_id
+
+def create_Order(id, total):
+    order=Order()
+    order.Orders_id=id
+    order.Orders_total=total
+    return order
+
+class Order_content(models.Model):
+    Food_name = models.CharField(max_length=200, default="none");
+    Food_quantity = models.IntegerField(default=0)
+    Food_from = models.ForeignKey(Order, default=1, verbose_name="Orders", on_delete=models.SET_DEFAULT)
+    def __str__(self):
+        return self.Food_name
+
+def create_Order_cont(name, quant):
+    container=Order_content()
+    container.Food_name=name
+    container.Food_quantity=quant
+    return container
