@@ -18,7 +18,7 @@
         <h4>{{ rest_name }}</h4>
       <table>
     <!-- Form for displaying menu and checkout  --> 
-    <form name = "myform" action = "/cart" target = "_self" method = "POST" > 
+    <form name = "myform" action = "/cart" target = "_blank" method = "POST" > 
     	{% csrf_token %}
       <input type = "hidden" name = "Rest_name" value = {{rest_name}}>
       <table id = "myTable" >
@@ -49,9 +49,8 @@
       </table>
 
   <div id="check" >
-    <a href=cart title="cart">
-      <button>Cart</button>
-    </a>
+    <button>Cart</button>
+    <button type="submit" formaction="/checkout" formtarget="_self">Check-out</button>
   </div>  
      </form> 
     </div>
