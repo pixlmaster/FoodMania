@@ -43,26 +43,28 @@ def create(name, message):
 class Order(models.Model):
     Orders_id = models.CharField(max_length=200, default="0")
     Orders_total = models.IntegerField(default=0) 
+    Restaurant_Order= models.CharField(max_length=200, default="0")
+    ordering = ['Restaurant_Order']
     class Meta:
         verbose_name_plural = "Orders"   
 
     def __str__(self):
         return self.Orders_id
 
-def create_Order(ID, total):
+def create_Order(ID, total, rest_name):
     order=Order()
     order.Orders_id=str(ID)
     order.Orders_total=total
+    order.Restaurant_Order= rest_name
     return order
 
 class Order_content(models.Model):
     Food_name = models.CharField(max_length=200, default="none");
     Food_quantity = models.IntegerField(default=0)
     Food_from = models.ForeignKey(Order, default=1, verbose_name="Orders", on_delete=models.SET_DEFAULT)
+    ordering = ['Food_from']
     def __str__(self):
         return self.Food_name
-    class Meta:
-        order_with_respect_to = 'Food_from'
 
 def create_Order_cont(name, quant, ID):
     container=Order_content()
