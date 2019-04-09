@@ -160,4 +160,4 @@ def checkout(request):
 				#data.append({'name' : name[i], 'price' : int(price[i]), 'quantity' : int(quantity[i]) } ) 
 				content=create_Order_cont(name[i],int(quantity[i]), order)
 				content.save()
-	return HttpResponse('Checked Out')
+	return redirect("/")

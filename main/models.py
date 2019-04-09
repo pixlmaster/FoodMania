@@ -17,12 +17,13 @@ class Restaurant(models.Model):
 
 
 class Food(models.Model):
-	Food_name = models.CharField(max_length=200, default="none");
-	Food_price = models.IntegerField()
-	Restaurant_items = models.ForeignKey(Restaurant, default=1, verbose_name="Restaurants", on_delete=models.SET_DEFAULT)
-	Food_slug = models.CharField(max_length=200, default=1)
-	def __str__(self):
-		return self.Food_name
+    Food_name = models.CharField(max_length=200, default="none")
+    Food_price = models.IntegerField()
+    Restaurant_items = models.ForeignKey(Restaurant, default=1, verbose_name="Restaurants", on_delete=models.SET_DEFAULT)
+    Food_slug = models.CharField(max_length=200, default=1)
+    ordering = ['Restaurant_items']
+    def __str__(self):
+        return self.Food_name
 
 
 class complaint(models.Model):
