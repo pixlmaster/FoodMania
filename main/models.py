@@ -42,16 +42,16 @@ def create(name, message):
 
 class Order(models.Model):
     Orders_id = models.CharField(max_length=200, default="0")
-    Orders_total = models.IntegerField() 
+    Orders_total = models.IntegerField(default=0) 
     class Meta:
         verbose_name_plural = "Orders"   
 
     def __str__(self):
         return self.Orders_id
 
-def create_Order(id, total):
+def create_Order(ID, total):
     order=Order()
-    order.Orders_id=id
+    order.Orders_id=str(ID)
     order.Orders_total=total
     return order
 
@@ -61,9 +61,12 @@ class Order_content(models.Model):
     Food_from = models.ForeignKey(Order, default=1, verbose_name="Orders", on_delete=models.SET_DEFAULT)
     def __str__(self):
         return self.Food_name
+    class Meta:
+        order_with_respect_to = 'Food_from'
 
-def create_Order_cont(name, quant):
+def create_Order_cont(name, quant, ID):
     container=Order_content()
     container.Food_name=name
     container.Food_quantity=quant
+    container.Food_from = ID
     return container

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Restaurant, Food, complaint, create
+from .models import Restaurant, Food, complaint, create, Order, Order_content, create_Order, create_Order_cont
 from .forms import SignUpForm
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
@@ -9,6 +9,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
+import random
 
 
 def single_slug(request, single_slug):
@@ -141,4 +142,22 @@ def cart(request):
 			context )
 
 def checkout(request):
+	if request.method == 'POST' : 
+		messages.info(request, f"Your Order has been submitted")
+		name = request.POST.getlist('food_name') 
+		price = request.POST.getlist('foodprice') 
+		quantity = request.POST.getlist('quantity') 
+		Rest_name=request.POST.get('Rest_name')
+		random_int=random.randint(10000,99999)
+		total=0
+		for i in range(len(name))  :
+			if quantity[i] is not '' : 
+				total = total + int(price[i]) * int(quantity[i])
+		order=create_Order(random_int,total)
+		order.save()
+		for i in range(len(name))  :
+			if quantity[i] is not '' :
+				#data.append({'name' : name[i], 'price' : int(price[i]), 'quantity' : int(quantity[i]) } ) 
+				content=create_Order_cont(name[i],int(quantity[i]), order)
+				content.save()
 	return HttpResponse('Checked Out')
