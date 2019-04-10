@@ -23,7 +23,7 @@ class Food(models.Model):
     Food_slug = models.CharField(max_length=200, default=1)
     ordering = ['Restaurant_items']
     def __str__(self):
-        return self.Food_name
+        return self.Restaurant_items.Restaurant_Name+"-"+self.Food_name
 
 
 class complaint(models.Model):
@@ -52,7 +52,7 @@ class Order(models.Model):
         verbose_name_plural = "Orders"   
 
     def __str__(self):
-        return self.Restaurant_Order
+        return self.Restaurant_Order + "-" + self.Orders_id
 
 def create_Order(ID, total, rest_name, Address, Phone):
     order=Order()
@@ -69,7 +69,7 @@ class Order_content(models.Model):
     Food_from = models.ForeignKey(Order, default=1, verbose_name="Orders", on_delete=models.SET_DEFAULT)
     ordering = ['Food_from']
     def __str__(self):
-        return self.Food_name
+        return (self.Food_name +"-"+ self.Food_from.Orders_id)
 
 def create_Order_cont(name, quant, ID):
     container=Order_content()
