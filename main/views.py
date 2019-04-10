@@ -159,7 +159,6 @@ def checkout(request):
 		order.save()
 		for i in range(len(name))  :
 			if quantity[i] is not '' :
-				#data.append({'name' : name[i], 'price' : int(price[i]), 'quantity' : int(quantity[i]) } ) 
 				content=create_Order_cont(name[i],int(quantity[i]), order)
 				content.save()
 	return redirect("/")

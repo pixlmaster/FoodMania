@@ -33,10 +33,10 @@
         {% for food in matching_Food %}
           <tr>
             <td>{{food.Food_name}}</td>
-            <td> <input type = "hidden" name = "food_name" value = {{food.Food_name}}> </td> 
+            <td> <input type = "hidden" name = "food_name" value = "{{food.Food_name}}"> </td> 
 
             <td>{{food.Food_price}}</td>
-            <td> <input type = "hidden" name = "foodprice" value = {{food.Food_price}} >  </td> 
+            <td> <input type = "hidden" name = "foodprice" value = "{{food.Food_price}}" >  </td> 
 
             <td> <input type = "text" name = "quantity" placeholder = "quantity" oninput="calculateTotal()"> </td> 
           </tr>
