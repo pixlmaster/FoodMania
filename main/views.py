@@ -155,7 +155,7 @@ def checkout(request):
 		for i in range(len(name))  :
 			if quantity[i] is not '' : 
 				total = total + int(price[i]) * int(quantity[i])
-		order=create_Order(random_int,total, Rest_name,Phone_no,Address)
+		order=create_Order(random_int,total, Rest_name,Address,Phone_no)
 		order.save()
 		for i in range(len(name))  :
 			if quantity[i] is not '' :

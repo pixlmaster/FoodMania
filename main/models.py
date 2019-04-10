@@ -52,7 +52,7 @@ class Order(models.Model):
         verbose_name_plural = "Orders"   
 
     def __str__(self):
-        return self.Restaurant_Order + "-" + self.Orders_id
+        return self.Restaurant_Order
 
 def create_Order(ID, total, rest_name, Address, Phone):
     order=Order()
