@@ -45,6 +45,8 @@ class Order(models.Model):
     Orders_id = models.CharField(max_length=200, default="0")
     Orders_total = models.IntegerField(default=0) 
     Restaurant_Order= models.CharField(max_length=200, default="0")
+    phone_no = models.CharField(max_length=200, default="not given")
+    Address = models.CharField(max_length=200, default="not given")
     ordering = ['Restaurant_Order']
     class Meta:
         verbose_name_plural = "Orders"   
@@ -52,11 +54,13 @@ class Order(models.Model):
     def __str__(self):
         return self.Restaurant_Order
 
-def create_Order(ID, total, rest_name):
+def create_Order(ID, total, rest_name, Address, Phone):
     order=Order()
     order.Orders_id=str(ID)
     order.Orders_total=total
     order.Restaurant_Order= rest_name
+    order.Address=Address
+    order.phone_no=Phone
     return order
 
 class Order_content(models.Model):

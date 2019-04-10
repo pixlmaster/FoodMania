@@ -149,11 +149,13 @@ def checkout(request):
 		quantity = request.POST.getlist('quantity') 
 		Rest_name=request.POST.get('Rest_name')
 		random_int=random.randint(10000,99999)
+		Phone_no=request.POST.get('Phone')
+		Address= request.POST.get('Address')
 		total=0
 		for i in range(len(name))  :
 			if quantity[i] is not '' : 
 				total = total + int(price[i]) * int(quantity[i])
-		order=create_Order(random_int,total, Rest_name)
+		order=create_Order(random_int,total, Rest_name,Phone_no,Address)
 		order.save()
 		for i in range(len(name))  :
 			if quantity[i] is not '' :
