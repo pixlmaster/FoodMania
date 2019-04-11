@@ -3,20 +3,14 @@
 {% block content %}
  {% load staticfiles %} 
 
-<style> 
-	.card{
-		max-height : 30%;
-		max-width : 30%;
-		float : left;
-		margin-left : 5%;
-	}
-</style> 
+<body style="background-color:Blue ;">
 {% if restaurants %}
+	<div class="row">
 	{% for rest in restaurants %}
-		<div class="col s8 m5">
+		<div class="col s8 m6">
 		  <div class="card">
 		    <div class="card-image">
-		      <img src="{{ rest.Restaurant_image.url }}" height="auto" width="auto">
+		      <img src="{{ rest.Restaurant_image.url }}" height="500">
 		      <span class="card-title">{{rest.Restaurant_name}}</span>
 		    </div>
 		    <div class="card-content">
@@ -28,8 +22,10 @@
 		  </div>
 		</div>
 	{% endfor %}
+</div>
 	
 {% else %}
 	<p> Nothing found </p> 
 {% endif %}
+</body>
 {% endblock %}

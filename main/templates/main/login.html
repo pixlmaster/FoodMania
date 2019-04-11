@@ -1,13 +1,27 @@
 {% extends 'main/header.html' %}
 
 {% block content %}
-
+<style>
+#btn button {
+  background-color: #4CAF50;
+  border: 1px solid green;
+  color: white;
+  padding: 15px 40px;
+  cursor: pointer;
+}
+#btn button:hover {background-color: #3e8e41}
+</style>
     <div class="container">
         <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
-            <button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit">Login</button>
+        <div id="btn" >
+            <button  class="butn" type="submit">Login</button>
+        </div>
         </form>
-        Don't have an account? <a href="/register" target="blank"><strong>register here</strong></a>!
+       	<p>
+        	Don't have an account? <a href="/register" target="blank"><strong>register here</strong></a>!
+        </p>
+        Staff Members, <a href="/admin/" target="blank"><strong>click here</strong></a> to Login.
     </div>
 {% endblock %}
