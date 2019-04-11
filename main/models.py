@@ -66,14 +66,16 @@ def create_Order(ID, total, rest_name, Address, Phone):
 class Order_content(models.Model):
     Food_name = models.CharField(max_length=200, default="none");
     Food_quantity = models.IntegerField(default=0)
-    Food_from = models.ForeignKey(Order, default=1, verbose_name="Orders", on_delete=models.SET_DEFAULT)
+    Food_ID = models.CharField(max_length=200, default="none")
+    Food_from = models.ForeignKey(Order, default=1, verbose_name="Orders", on_delete=models.CASCADE)
     ordering = ['Food_from']
     def __str__(self):
         return (self.Food_name +"-"+ self.Food_from.Orders_id)
 
-def create_Order_cont(name, quant, ID):
+def create_Order_cont(name, quant, ID, orderID):
     container=Order_content()
     container.Food_name=name
     container.Food_quantity=quant
     container.Food_from = ID
+    container.Food_ID = orderID
     return container

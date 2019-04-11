@@ -159,6 +159,6 @@ def checkout(request):
 		order.save()
 		for i in range(len(name))  :
 			if quantity[i] is not '' :
-				content=create_Order_cont(name[i],int(quantity[i]), order)
+				content=create_Order_cont(name[i],int(quantity[i]), order, str(random_int))
 				content.save()
 	return redirect("/")

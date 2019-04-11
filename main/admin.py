@@ -16,7 +16,7 @@ class Order_Admin(admin.ModelAdmin):
 	search_fields=('Restaurant_Order','Orders_id')
 
 class Order_content_Admin(admin.ModelAdmin):
-	list_display=('Food_name','Food_quantity','Food_from')
+	list_display=('Food_name',"Food_ID",'Food_quantity','Food_from')
 	search_fields=('Food_name',)
 
 admin.site.register(Food, Food_Admin)
