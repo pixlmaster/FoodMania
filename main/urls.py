@@ -18,5 +18,6 @@ urlpatterns = [
     path('checkout',views.checkout,name='checkout'),
     re_path('profile/profile', views.get_user_profile, name = 'prof-prof'),
     re_path('profile/signup', views.sign_up, name = 'prof-signup'),
+    re_path('signup/signup', views.sign_up, name = 'sign-sign'),
     path("<single_slug>", views.single_slug, name="single_slug"),
 ]
