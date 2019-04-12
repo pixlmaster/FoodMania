@@ -4,7 +4,8 @@
 ## Prerequisite/libraries used
 1. **Python3(3.6 +)** needs to be installed, if it is not, you can simply google how to do it(it's fairly easy).
 2. **Django(2.1 +)** needs to be installed, if it is not, open terminal and type `pip3 install Django`.
-3. This code was written using **Python 3.6.7** and **Django 2.1.7**.
+3. **Pillow(1.1+)** needs to be installed.
+4. This code was written using **Python 3.6.7** and **Django 2.1.7**.
 
 ## Usage(Tested on ubuntu 18.04)
 1. Clone or Fetch this repo to your local machine.
