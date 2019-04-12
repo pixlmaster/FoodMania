@@ -11,6 +11,8 @@
 }
 #btn button:hover {background-color: #3e8e41}
 </style>
+<body style="background-color:#F6F6F6 ;">
+
     <div class="container">
         <form method="POST">
         {% csrf_token %}
@@ -24,4 +26,5 @@
         </p>
         Staff Members, <a href="/admin/" target="blank"><strong>click here</strong></a> to Login.
     </div>
+</body>
 {% endblock %}

@@ -19,7 +19,7 @@ class Restaurant(models.Model):
 class Food(models.Model):
     Food_name = models.CharField(max_length=200, default="none")
     Food_price = models.IntegerField()
-    Restaurant_items = models.ForeignKey(Restaurant, default=1, verbose_name="Restaurants", on_delete=models.SET_DEFAULT)
+    Restaurant_items = models.ForeignKey(Restaurant, default=1, verbose_name="Restaurants", on_delete=models.CASCADE)
     Food_slug = models.CharField(max_length=200, default=1)
     ordering = ['Restaurant_items']
     def __str__(self):
