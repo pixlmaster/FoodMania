@@ -1,0 +1,15 @@
+@startuml
+
+participant Customer
+participant Website 
+
+activate Customer
+activate Website 
+
+Customer -> Website : Query as String
+Website --> Customer : Display Relevant Results
+
+deactivate Customer 
+deactivate Website 
+
+@enduml

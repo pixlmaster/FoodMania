@@ -1,0 +1,28 @@
+@startuml
+
+actor RestaurantAdmin
+actor Administrator
+
+
+activate Administrator
+activate Server
+
+RestaurantAdmin -> Administrator : approvalRequest()
+Administrator -> Server : approveOrDenyRequest()
+
+
+activate Database
+Server -> Database : AddRestaurant()
+
+Database --> Server: return Confirmation Message (or Error)
+
+Server -> Server : [ConfirmationMessage = "Restaurant Added"] AddRestaurantPageToPlatform()
+
+
+deactivate Database
+
+Server -> Administrator : Confirmation Message(or Error)
+
+deactivate Server 
+deactivate Database
+@enduml

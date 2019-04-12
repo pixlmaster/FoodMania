@@ -1,0 +1,19 @@
+@startuml
+
+participant Customer
+participant Server
+
+activate Customer
+activate Server 
+
+Customer -> Server : Send Credentials
+
+activate Database
+Server -> Database : Save Credentials 
+Server --> Customer : Sign Up Conformation
+
+deactivate Customer
+deactivate Server 
+deactivate Database
+
+@enduml

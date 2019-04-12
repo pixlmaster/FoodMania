@@ -1,0 +1,32 @@
+
+@startuml
+
+actor RestaurantAdmin
+activate RestaurantAdmin
+
+activate Server
+RestaurantAdmin -> Server : Item ID
+
+activate Database
+Server -> Database : Check if Item exists
+Database --> Server : return boolean (ItemExists)
+
+Server --> RestaurantAdmin : [ItemExists = False] return "Item doesn't exists"
+
+
+RestaurantAdmin -> Server : [ItemExists = True] changeItemStatus(newStatus)
+Server->Database : changeItemStatus(newStatus)
+
+Database --> Server : return ConfirmationMessage (or Error)
+
+Server -> Server : [ConfirmationMessage = "Status Changed"] change Item Status on platform
+
+Server --> RestaurantAdmin : return ConfirmationMessage (or Error)
+
+deactivate Database 
+deactivate Server 
+
+
+deactivate RestaurantAdmin
+deactivate Server
+@enduml

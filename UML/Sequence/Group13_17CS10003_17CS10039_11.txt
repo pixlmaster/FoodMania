@@ -1,0 +1,28 @@
+
+@startuml
+
+actor RestaurantAdmin
+activate RestaurantAdmin
+
+activate Server
+RestaurantAdmin -> Server : Item ID
+
+activate Database
+Server -> Database : Check if Item exists
+Database --> Server : return boolean (ItemExists)
+
+Server --> RestaurantAdmin : [ItemExists = False] return "Item doesn't exists"
+
+Server -> Database : [ItemExists = True] Delete Item
+Database --> Server: Confirmation Message(or Error)
+
+
+Server -> RestaurantAdmin : [ItemExists = True]Confirmation Message (or Error)
+
+deactivate Database 
+deactivate Server 
+
+
+deactivate RestaurantAdmin
+deactivate Server
+@enduml

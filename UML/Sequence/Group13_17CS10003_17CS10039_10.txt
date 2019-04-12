@@ -1,0 +1,20 @@
+
+@startuml
+
+actor RestaurantAdmin
+activate RestaurantAdmin
+
+activate Server
+RestaurantAdmin -> Server : Send Item details
+
+activate Database
+Server -> Database : Save Item details
+Database --> Server : Confirmation Message (or Error)
+
+deactivate Database
+
+Server --> RestaurantAdmin : Confirmation Message(or Error)
+
+deactivate RestaurantAdmin
+deactivate Server
+@enduml

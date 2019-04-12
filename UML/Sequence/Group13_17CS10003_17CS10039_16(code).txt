@@ -1,0 +1,27 @@
+@startuml
+
+actor Delivery_boy
+
+activate Delivery_boy
+
+Delivery_boy->Restaurant : update order list
+
+activate Restaurant
+
+
+
+Restaurant->Customer : Confirm order
+
+activate Customer
+
+deactivate Customer
+
+Restaurant->Delivery_boy : updated list
+
+
+deactivate Restaurant
+deactivate Delivery_boy
+
+
+
+@enduml
